@@ -1,0 +1,17 @@
+title: "Engineering & AI the Right Way"
+description: >-
+  Exploring thoughtful approaches to building resilient engineering systems and responsible artificial intelligence.
+baseurl: ""
+url: ""
+
+# Build settings
+markdown: kramdown
+theme: minima
+
+author:
+  name: "Engineering & AI the Right Way"
+  email: ""
+
+social_links:
+  github: hieutrtr
+  linkedin: ""
