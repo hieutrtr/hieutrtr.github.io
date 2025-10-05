@@ -5,8 +5,6 @@ lang: en
 ref: home
 ---
 
-{% include lang-switcher.html %}
-
 Welcome to **Engineering & AI the Right Way**, a journal dedicated to professional, disciplined engineering practices and the pragmatic use of artificial intelligence.
 
 Here you'll find:

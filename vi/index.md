@@ -6,8 +6,6 @@ ref: home
 permalink: /vi/
 ---
 
-{% include lang-switcher.html %}
-
 Chào mừng bạn đến với **Kỹ thuật & AI đúng cách** — nhật ký tập trung vào phương pháp kỹ thuật chuyên nghiệp, kỷ luật và cách vận dụng AI một cách thực dụng.
 
 Tại đây bạn sẽ tìm thấy:
