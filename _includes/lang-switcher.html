@@ -1,0 +1,36 @@
+{% if page.ref and site.languages %}
+  {% assign post_translations = site.posts | where: "ref", page.ref | where_exp: "item", "item.lang != page.lang" %}
+  {% assign page_translations = site.pages | where: "ref", page.ref | where_exp: "item", "item.lang != page.lang" %}
+  {% assign translations = post_translations | concat: page_translations %}
+  {% assign available = '' | split: '' %}
+  {% for entry in site.languages %}
+    {% assign lang_code = entry[0] %}
+    {% if lang_code == page.lang %}
+      {% assign available = available | push: entry %}
+    {% else %}
+      {% assign translation = translations | where: "lang", lang_code | first %}
+      {% if translation %}
+        {% assign available = available | push: entry %}
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+  {% if available.size > 1 %}
+    <nav class="lang-switcher" aria-label="Language selector">
+      {% for entry in available %}
+        {% assign lang_code = entry[0] %}
+        {% assign lang_label = entry[1] %}
+        {% if lang_code == page.lang %}
+          <span class="lang-switcher__current">{{ lang_label }}</span>
+        {% else %}
+          {% assign translation = translations | where: "lang", lang_code | first %}
+          {% if translation %}
+            <a class="lang-switcher__link" href="{{ translation.url | relative_url }}">{{ lang_label }}</a>
+          {% endif %}
+        {% endif %}
+        {% unless forloop.last %}
+          <span class="lang-switcher__separator">|</span>
+        {% endunless %}
+      {% endfor %}
+    </nav>
+  {% endif %}
+{% endif %}

@@ -3,6 +3,9 @@ layout: post
 title: "Ready for Autonomy: How Checkpoints Shape Claude Code 2.0"
 description: "Why reversible checkpoints are the trust mechanism for autonomous coding agents like Claude Code 2.0."
 featured: false
+lang: en
+ref: ready-for-autonomy-checkpoints
+permalink: /ready-for-autonomy-checkpoints/
 ---
 
 # 📰 Ready for Autonomy: How Checkpoints Shape Claude Code 2.0  
