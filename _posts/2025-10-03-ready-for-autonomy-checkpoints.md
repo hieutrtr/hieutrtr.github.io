@@ -6,6 +6,7 @@ featured: false
 lang: en
 ref: ready-for-autonomy-checkpoints
 permalink: /ready-for-autonomy-checkpoints/
+date: 2025-10-03
 ---
 
 # 📰 Ready for Autonomy: How Checkpoints Shape Claude Code 2.0  

@@ -6,6 +6,7 @@ featured: false
 lang: vi
 ref: ready-for-autonomy-checkpoints
 permalink: /vi/ready-for-autonomy-checkpoints/
+date: 2025-10-03
 ---
 
 # 📰 Sẵn sàng cho Autonomy: Checkpoints định hình Claude Code 2.0
