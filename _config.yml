@@ -3,6 +3,10 @@ description: >-
   Exploring thoughtful approaches to building resilient engineering systems and using artificial intelligence professionally.
 baseurl: ""
 url: ""
+lang: en
+languages:
+  en: English
+  vi: Tiếng Việt
 
 # Build settings
 markdown: kramdown
