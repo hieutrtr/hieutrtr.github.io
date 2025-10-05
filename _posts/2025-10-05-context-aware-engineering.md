@@ -6,6 +6,9 @@ featured: false
 lang: en
 ref: context-aware-engineering
 permalink: /context-aware-engineering/
+banner: /assets/images/context-anxiety-banner.svg
+banner_alt: "Illustration of a glowing brain surrounded by signal waves and a DNA helix"
+date: 2025-10-05
 ---
 
 # 🧠 From Context Anxiety to Context-Aware Engineering
