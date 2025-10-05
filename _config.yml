@@ -3,6 +3,7 @@ description: >-
   Exploring thoughtful approaches to building resilient engineering systems and using artificial intelligence professionally.
 baseurl: ""
 url: ""
+timezone: Asia/Ho_Chi_Minh
 lang: en
 languages:
   en: English
