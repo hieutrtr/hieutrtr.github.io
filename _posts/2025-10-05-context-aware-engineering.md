@@ -207,9 +207,5 @@ That’s how context anxiety becomes context awareness.
 
 ---
 
-**Cover Image Prompt**
-
-> “A glowing circuit brain exhaling digital data loops, symbolizing an AI releasing memory to regain focus, cinematic 4K.”
-
 **Tags:** #AIEngineering #LLMAgents #ContextWindow #Anthropic #CognitionAI #Devin #PromptEngineering
 
