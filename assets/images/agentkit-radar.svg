@@ -31,9 +31,9 @@
       <line x1="0" y1="0" x2="-207.8" y2="120"/>
       <line x1="0" y1="0" x2="-207.8" y2="-120"/>
     </g>
-    <polygon points="0,-210 130,-80 160,80 20,190 -130,80 -90,-80" fill="url(#agentkitGradient)" fill-opacity="0.6" stroke="#4c6ef5" stroke-width="3"/>
-    <polygon points="0,-170 207.8,-120 207.8,120 0,150 -110,70 -120,-60" fill="url(#n8nGradient)" fill-opacity="0.45" stroke="#2b8a3e" stroke-width="3"/>
-    <polygon points="0,-140 150,-70 140,100 -10,120 -190,100 -170,-40" fill="url(#flowiseGradient)" fill-opacity="0.45" stroke="#f76707" stroke-width="3"/>
+    <polygon points="0,-192 124.7,-72 207.8,120 0,144 -62.4,36 -207.8,-120" fill="url(#agentkitGradient)" fill-opacity="0.6" stroke="#4c6ef5" stroke-width="3"/>
+    <polygon points="0,-168 187.1,-108 83.1,48 0,240 -207.8,120 -103.9,-60" fill="url(#n8nGradient)" fill-opacity="0.45" stroke="#2b8a3e" stroke-width="3"/>
+    <polygon points="0,-192 207.8,-120 103.9,60 0,216 -187.1,108 -166.3,-96" fill="url(#flowiseGradient)" fill-opacity="0.45" stroke="#f76707" stroke-width="3"/>
   </g>
   <g fill="#e2e8f0" font-family="'Inter', 'Segoe UI', sans-serif" font-size="18" text-anchor="middle">
     <text x="300" y="40">Ease of Use</text>
