@@ -62,7 +62,9 @@ If ChatGPT was a single powerful assistant, AgentKit is the framework to build m
 
 When you zoom out, AgentKit competes not only with agent frameworks like LangChain or AutoGen, but also with workflow tools like n8n and Flowise — both popular in automation and open-source AI communities.
 
-Let’s compare them through six critical lenses.
+Let’s compare them through six critical lenses, keeping the scorecard, visual snapshot, and proof points together for an easy read.
+
+### Scorecard at a Glance
 
 | Criteria | OpenAI AgentKit | n8n | Flowise |
 | --- | --- | --- | --- |
@@ -72,6 +74,20 @@ Let’s compare them through six critical lenses.
 | **Integration Ecosystem** | Connector registry (growing) | 400+ integrations built-in | Flexible but fewer official connectors |
 | **Deployment Control** | Fully hosted by OpenAI | Fully self-hostable | Fully self-hostable |
 | **Agentic Specialization** | Deep multi-agent orchestration, evals, tracing | Limited (automation focus) | Strong (multi-agent graphs, RAG, memory) |
+
+### Visual Comparison
+
+Here is a radar chart summarizing the relative strengths of each platform:
+
+![Radar chart comparing AgentKit, n8n, and Flowise across ease of use, customization, safety, integrations, deployment control, and agentic specialization. Scores favor AgentKit in safety and agentic depth, n8n in integrations, and Flowise in customization.](/assets/images/agentkit-radar.svg)
+
+**Interpretation:**
+
+- 🟦 **AgentKit** — optimized for safe, agentic reasoning and production deployment.
+- 🟩 **n8n** — strongest in connectivity and workflow automation.
+- 🟧 **Flowise** — excels in customization and self-hosting flexibility.
+
+_(The chart shows subjective normalized scores across 1–10 for each category.)_
 
 ### Proof Points Behind the Scores
 
@@ -85,22 +101,6 @@ Below is the reasoning — the “why” behind each score.
 | 4 | Integration Ecosystem | AgentKit (6/10): Early-stage connector registry (Google Drive, Teams).<br>n8n (10/10): 400+ official integrations, broadest coverage.<br>Flowise (9/10): Supports vector stores, RAGs, APIs; slightly less enterprise-grade breadth. |
 | 5 | Deployment Control | AgentKit (3/10): Managed by OpenAI; no self-hosting.<br>n8n (10/10): Fully self-hostable, local or cloud.<br>Flowise (9/10): Fully open-source, self-hostable, but less documented for scaling. |
 | 6 | Agentic Specialization | AgentKit (10/10): Purpose-built for agents — multi-agent orchestration, evals, tracing, handoffs.<br>n8n (5/10): AI support generic; lacks reasoning primitives.<br>Flowise (8/10): LangChain-based multi-agent and RAG graphs, strong but less governed. |
-
----
-
-## 📊 Visual Comparison
-
-Here is a radar chart summarizing the relative strengths of each platform:
-
-![Radar chart comparing AgentKit, n8n, and Flowise across ease of use, customization, safety, integrations, deployment control, and agentic specialization. Scores favor AgentKit in safety and agentic depth, n8n in integrations, and Flowise in customization.](/assets/images/agentkit-radar.svg)
-
-**Interpretation:**
-
-- 🟦 **AgentKit** — optimized for safe, agentic reasoning and production deployment.
-- 🟩 **n8n** — strongest in connectivity and workflow automation.
-- 🟧 **Flowise** — excels in customization and self-hosting flexibility.
-
-_(The chart shows subjective normalized scores across 1–10 for each category.)_
 
 ---
 
