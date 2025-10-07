@@ -73,6 +73,19 @@ Let’s compare them through six critical lenses.
 | **Deployment Control** | Fully hosted by OpenAI | Fully self-hostable | Fully self-hostable |
 | **Agentic Specialization** | Deep multi-agent orchestration, evals, tracing | Limited (automation focus) | Strong (multi-agent graphs, RAG, memory) |
 
+### Proof Points Behind the Scores
+
+Below is the reasoning — the “why” behind each score.
+
+| # | Criterion | Evidence & Analytics |
+| --- | --- | --- |
+| 1 | Ease of Use | AgentKit (8/10): Includes Agent Builder and ChatKit for low-code workflows and chat embedding. However, backend customization is limited.<br>n8n (7/10): Easy node UI but requires more setup for AI tasks.<br>Flowise (8/10): Fast to prototype, visual graph, good defaults; slightly rougher UX. |
+| 2 | Customization | AgentKit (6/10): Extendable via SDK but constrained by hosted nature and fixed connectors.<br>n8n (9/10): Add JS code, HTTP calls, or custom nodes freely.<br>Flowise (10/10): Fully open-source, custom nodes, and editable logic. |
+| 3 | Safety & Guardrails | AgentKit (10/10): Native guardrails for PII masking, content filtering, compliance, and audit traces.<br>n8n (4/10): Generic error handling only.<br>Flowise (5/10): Safety depends on custom LangChain filters; no built-in guardrail system. |
+| 4 | Integration Ecosystem | AgentKit (6/10): Early-stage connector registry (Google Drive, Teams).<br>n8n (10/10): 400+ official integrations, broadest coverage.<br>Flowise (9/10): Supports vector stores, RAGs, APIs; slightly less enterprise-grade breadth. |
+| 5 | Deployment Control | AgentKit (3/10): Managed by OpenAI; no self-hosting.<br>n8n (10/10): Fully self-hostable, local or cloud.<br>Flowise (9/10): Fully open-source, self-hostable, but less documented for scaling. |
+| 6 | Agentic Specialization | AgentKit (10/10): Purpose-built for agents — multi-agent orchestration, evals, tracing, handoffs.<br>n8n (5/10): AI support generic; lacks reasoning primitives.<br>Flowise (8/10): LangChain-based multi-agent and RAG graphs, strong but less governed. |
+
 ---
 
 ## 📊 Visual Comparison
