@@ -1,0 +1,61 @@
+<svg width="600" height="600" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Radar chart comparing AgentKit, n8n, and Flowise</title>
+  <desc id="desc">AgentKit scores high on safety and agentic specialization, n8n leads in integrations, Flowise excels in customization.</desc>
+  <defs>
+    <linearGradient id="agentkitGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8ab4ff"/>
+      <stop offset="100%" stop-color="#4c6ef5"/>
+    </linearGradient>
+    <linearGradient id="n8nGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7ed8b3"/>
+      <stop offset="100%" stop-color="#2b8a3e"/>
+    </linearGradient>
+    <linearGradient id="flowiseGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffcc8a"/>
+      <stop offset="100%" stop-color="#f76707"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="600" fill="#0f172a"/>
+  <g transform="translate(300,300)">
+    <g stroke="#334155" stroke-width="1" fill="none">
+      <polygon points="0,-240 207.8,-120 207.8,120 0,240 -207.8,120 -207.8,-120"/>
+      <polygon points="0,-180 155.8,-90 155.8,90 0,180 -155.8,90 -155.8,-90"/>
+      <polygon points="0,-120 103.9,-60 103.9,60 0,120 -103.9,60 -103.9,-60"/>
+      <polygon points="0,-60 51.9,-30 51.9,30 0,60 -51.9,30 -51.9,-30"/>
+    </g>
+    <g stroke="#475569" stroke-width="1">
+      <line x1="0" y1="0" x2="0" y2="-240"/>
+      <line x1="0" y1="0" x2="207.8" y2="-120"/>
+      <line x1="0" y1="0" x2="207.8" y2="120"/>
+      <line x1="0" y1="0" x2="0" y2="240"/>
+      <line x1="0" y1="0" x2="-207.8" y2="120"/>
+      <line x1="0" y1="0" x2="-207.8" y2="-120"/>
+    </g>
+    <polygon points="0,-210 130,-80 160,80 20,190 -130,80 -90,-80" fill="url(#agentkitGradient)" fill-opacity="0.6" stroke="#4c6ef5" stroke-width="3"/>
+    <polygon points="0,-170 207.8,-120 207.8,120 0,150 -110,70 -120,-60" fill="url(#n8nGradient)" fill-opacity="0.45" stroke="#2b8a3e" stroke-width="3"/>
+    <polygon points="0,-140 150,-70 140,100 -10,120 -190,100 -170,-40" fill="url(#flowiseGradient)" fill-opacity="0.45" stroke="#f76707" stroke-width="3"/>
+  </g>
+  <g fill="#e2e8f0" font-family="'Inter', 'Segoe UI', sans-serif" font-size="18" text-anchor="middle">
+    <text x="300" y="40">Ease of Use</text>
+    <text x="530" y="140">Customization</text>
+    <text x="530" y="460">Safety &amp; Guardrails</text>
+    <text x="300" y="560">Integration Ecosystem</text>
+    <text x="70" y="460">Deployment Control</text>
+    <text x="70" y="140">Agentic Specialization</text>
+  </g>
+  <g transform="translate(40,470)" font-family="'Inter', 'Segoe UI', sans-serif" font-size="20" fill="#f8fafc">
+    <text x="0" y="0">Legend</text>
+    <g transform="translate(0,20)" fill="#f8fafc" font-size="18">
+      <rect x="0" y="-14" width="24" height="12" fill="url(#agentkitGradient)" opacity="0.9"/>
+      <text x="36" y="-4">AgentKit</text>
+    </g>
+    <g transform="translate(0,50)" fill="#f8fafc" font-size="18">
+      <rect x="0" y="-14" width="24" height="12" fill="url(#n8nGradient)" opacity="0.9"/>
+      <text x="36" y="-4">n8n</text>
+    </g>
+    <g transform="translate(0,80)" fill="#f8fafc" font-size="18">
+      <rect x="0" y="-14" width="24" height="12" fill="url(#flowiseGradient)" opacity="0.9"/>
+      <text x="36" y="-4">Flowise</text>
+    </g>
+  </g>
+</svg>
