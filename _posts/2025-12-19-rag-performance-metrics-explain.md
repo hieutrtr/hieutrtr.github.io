@@ -6,6 +6,7 @@ featured: false
 lang: en
 ref: rag-performance-metrics-explain
 permalink: /rag-performance-metrics-explain/
+banner: /assets/images/rag-performance-metrics-explain.png
 date: 2025-12-19
 ---
 
