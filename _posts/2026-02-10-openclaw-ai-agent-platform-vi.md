@@ -35,11 +35,6 @@ date: 2026-02-10
 - Managed AI platforms: $500-2,000/tháng
 - **Savings:** 60-90% với self-hosted OpenClaw
 
-**ROI cho iOS team (5 engineers):**
-- Before: $720/mo GitHub Actions macOS runners
-- After: $1,399 Mac Mini + $12/mo VPS
-- **Savings:** ~$8,000/năm, ROI 2 tháng
-
 ---
 
 ## 🏗️ Kiến Trúc: Gateway-Centric
