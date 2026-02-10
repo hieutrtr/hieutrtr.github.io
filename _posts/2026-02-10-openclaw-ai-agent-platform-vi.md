@@ -453,35 +453,6 @@ Cost (enterprise scale):
 
 ---
 
-## 📊 Tech Stack
-
-| Layer | Technology |
-|-------|-----------|
-| **Language** | TypeScript 5.9 (ESM strict) |
-| **Runtime** | Node.js 22+ |
-| **Build** | tsdown (6 bundles), Vite (UI) |
-| **HTTP** | Hono 4.11 |
-| **WebSocket** | ws 8.x |
-| **Database** | SQLite + sqlite-vec |
-| **Validation** | Zod 4.3, TypeBox schemas |
-| **Testing** | Vitest 4.0, Playwright |
-| **Linting** | OxLint, OxFmt |
-| **Package** | pnpm workspaces (monorepo) |
-
-**Monorepo structure:**
-
-```
-openclaw/
-├── src/           # Core (gateway, CLI, agent runtime)
-├── ui/            # Web dashboard (Lit 3.3)
-├── extensions/    # 30+ channel plugins
-├── apps/          # Native (Swift/Kotlin)
-├── skills/        # 50+ built-in skills
-└── packages/      # Shared libs
-```
-
----
-
 ## 🤔 OpenClaw vs Others
 
 **vs AutoGPT:**
@@ -597,30 +568,6 @@ Savings:           60-90%
 - ❌ Non-technical users (cần command line)
 - ❌ Zero-maintenance mindset (cần quản lý server)
 - ❌ Turnkey SaaS experience (self-hosted có trade-offs)
-
----
-
-## 🚦 Next Steps
-
-**1. Explore Documentation:**
-
-```bash
-# Generated from OpenClaw repo
-cat docs/project_knowledge/project-overview.md
-cat docs/project_knowledge/architecture.md
-```
-
-**2. Try on DigitalOcean:**
-
-```bash
-# $200 free credits (60 days)
-# Deploy 1-click OpenClaw droplet
-```
-
-**3. Join Community:**
-- Discord: Ask questions, share workflows
-- ClawHub: Discover/publish skills
-- GitHub: Report bugs, contribute
 
 ---
 
