@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Từ BMAD sang Claude Plugin Composition — Giảm 99% Token Burn"
-description: "Câu chuyện về việc đốt $200/tháng với multi-agent systems và phát hiện ra architecture patterns giúp token kéo dài gấp 3 lần."
+description: "Câu chuyện về việc hay bị quota limit giữa tháng với multi-agent systems và phát hiện ra architecture patterns giúp token efficiency tăng 3×."
 featured: true
 lang: vi
 ref: bmad-vs-claude-plugins
@@ -11,11 +11,11 @@ date: 2026-02-27
 
 # Từ BMAD sang Claude Plugin Composition — Cuộc hành trình giảm 99% token burn 🚀
 
-*Câu chuyện về việc đốt $200/tháng với multi-agent systems và phát hiện ra architecture patterns giúp token kéo dài gấp 3 lần.*
+*Câu chuyện về việc hay bị quota limit giữa tháng với multi-agent systems và phát hiện ra architecture patterns giúp token efficiency tăng 3×.*
 
 ---
 
-## Mở đầu: Khi $200/tháng bay trong 4 tuần
+## Mở đầu: Khi quota limit đánh bạn giữa tháng
 
 Vài tháng trước, tui đang ở trạng thái "AI coding productivity peak" với **BMAD-METHOD** (Build More Architect Dreams). 
 
@@ -30,17 +30,17 @@ Workflow đỉnh:
 Nhưng rồi nhận ra hai điều đau đớn:
 
 1. **Chạy lâu** — Mỗi lần planning, agents discuss qua lại, nhiều turns → đợi mỏi tay
-2. **Cháy token như đốt tiền** — 2 projects song song, con **Claude max $200/tháng bay trong 4 tuần**
+2. **Cháy token như đốt tiền** — 2 projects song song với BMAD, **hay bị quota limit giữa tháng** (Claude max $200/tháng nhưng token burn rate cao)
 
-Thế là phải reset, mất continuity, làm lại... vòng lặp vô tận.
+Thế là phải chờ reset quota, mất continuity, làm lại... vòng lặp vô tận.
 
-## Chuyển qua Claude Code — "Chắc cũng thế thôi"
+## Chuyển qua Claude Skills — "Chắc cũng thế thôi"
 
 Dạo gần đây công ty ai cũng xôn xao về **Claude Skills**. Sếp A viết skill meeting notes, sếp B share skill review code, team C có skill domain knowledge riêng.
 
 Tui nghĩ "chắc cũng giống mấy tool khác" — nhưng thử vài tuần thì **shocked**.
 
-**Cùng workload, con $200 giờ kéo được 10-12 tuần thay vì 4 tuần.**
+**Cùng workload, ít khi bị quota limit giữa tháng.**
 
 Tui phải ngồi research kỹ: **Tại sao token economy khác đến vậy?**
 
@@ -412,22 +412,22 @@ Sau khi research architecture kỹ, tui hiểu:
 ### Trước (BMAD-only)
 
 ```
-Monthly usage:
-- 2 projects
+Monthly usage với Claude max $200:
+- 2 projects song song
 - ~100K tokens/week/project
 - 200K tokens/week total
 ─────────────────────────────
-Claude max $200 = ~8M tokens/month
-→ 8M / 800K per month = 10 weeks... wait no.
-→ 200K/week × 4 weeks = 800K/month
-→ Nhưng thực tế: Context resets, re-planning...
-→ 4 tuần hết $200
+Quota: ~8M tokens/month ($200)
+Weekly burn: 200K tokens
+→ Tháng 1-2: OK
+→ Tháng 3: Hay bị quota limit tuần 3-4
+→ Phải chờ reset quota đầu tháng
 ```
 
 ### Giờ (BMAD methodology + Claude Plugin infrastructure)
 
 ```
-Monthly usage:
+Monthly usage với Claude max $200:
 - 2 projects
 - Planning phase: ~30K tokens/week (BMAD approach)
 - Execution phase: ~40K tokens/week (Plugin composition)
@@ -435,16 +435,13 @@ Monthly usage:
   └─ Subagents: 30K tokens (isolated, cheap Haiku)
 ─────────────────────────────
 Total: ~70K tokens/week
-→ 70K × 4 = 280K/month
-→ $200 kéo dài: 8M / 280K ≈ 28 weeks (~7 months)
-
-But realistically:
+Weekly burn giảm: 200K → 70K (65% reduction)
+→ Ít khi bị quota limit giữa tháng
 → Context efficiency → less resets
 → Subagents on Haiku (1/5 cost of Sonnet)
-→ 10-12 tuần với $200 (3× longer than before)
 ```
 
-**3× improvement in token efficiency.**
+**65-70% reduction in token burn rate = ít bị quota limit.**
 
 ## Những bài học đau đớn
 
