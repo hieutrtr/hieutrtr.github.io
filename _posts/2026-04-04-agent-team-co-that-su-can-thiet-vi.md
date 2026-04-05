@@ -17,29 +17,29 @@ date: 2026-04-05
 
 Multi-agent, agent team, swarm — những buzzwords đang nổi nhất trong AI engineering năm 2025. Mọi framework đều vẽ ra viễn cảnh một đội AI chạy parallel, mỗi agent chuyên về một domain, phối hợp nhịp nhàng như team engineer thật: người nghiên cứu, người code, người review, người deploy.
 
-Tôi đã tin vào viễn cảnh đó. Đã thử. Và đây là những gì thực sự xảy ra.
+Tôi đã tin vào viễn cảnh đó. Đã thử nghiêm túc. Và đây là những gì thực sự xảy ra.
 
 ---
 
 ## Khi Multi-Agent Trông Quá Hấp Dẫn
 
-Năm 2024-2025, multi-agent là thứ hot nhất trong AI engineering. LangGraph, CrewAI, AutoGen, OpenAI Swarm (Swarm là experimental/educational framework — OpenAI sau đó release Agents SDK vào Mar 2025 như production successor) — tất cả đều vẽ ra viễn cảnh một đội AI làm việc như team engineer thật: người nghiên cứu, người code, người review, người deploy. Và lý do để tin vào viễn cảnh đó không phải không có cơ sở: parallelism thực sự, specialization thực sự, adversarial validation.
+Năm 2024-2025, multi-agent là thứ hot nhất trong AI engineering. LangGraph, CrewAI, AutoGen, OpenAI Swarm (Swarm là experimental/educational framework — OpenAI sau đó release Agents SDK vào Mar 2025 như production successor) — tất cả đều pitch một tương lai hấp dẫn. Và lý do để tin không phải không có cơ sở: parallelism thực sự, specialization thực sự, adversarial validation.
 
-Khoảng đầu 2025, tôi thử nghiêm túc với CrewAI cho một pipeline phân tích thị trường: lead agent nhận ticker, decompose thành sub-tasks (fundamental analysis, technical analysis, sentiment), dispatch xuống 3 member agents, tổng hợp thành report. Trông impressive khi demo. Tôi thực sự chờ đợi nó hoạt động tốt — và ban đầu nó trông như vậy.
+Khoảng đầu 2025, tôi thử nghiêm túc với CrewAI cho một pipeline phân tích thị trường: lead agent nhận ticker, decompose thành sub-tasks (fundamental analysis, technical analysis, sentiment), dispatch xuống 3 member agents, tổng hợp thành report. Demo chạy ngon, tôi vui như chưa bao giờ được vui. Rồi dùng thật.
 
-Nhưng sau đó là phần mà docs bỏ qua: cách agents xử lý context khi chain dài và intermediate outputs không được validated.
+Nhưng sau đó là phần mà docs bỏ qua.
 
 ---
 
 ## Overhead Thật Của Team Coordination
 
-Đây là phần mà team architecture pitch thường bỏ qua.
-
 ### Session Overhead Tích Lũy
 
 Team dispatch không free về mặt latency. Lead agent nhận task, phân tích, dispatch xuống 3 member agents, tổng hợp kết quả — đó là ít nhất 6 LLM calls trong scenario đơn giản nhất (lead cần 2 calls: một để phân tích/plan, một để dispatch + format instructions cho members; cộng 3 member calls + 1 synthesis). Trên thực tế với tool calls, retry loops khi member fail, và agentic loops, con số này dễ lên 15-20 calls.
 
-Multiplier này không chỉ là về cost — nó là về latency. Single agent dispatch cho kết quả trong vài phút. Team dispatch với lead + 3 members: bạn cộng dồn latency của từng bước, plus orchestration overhead. Với tasks không cần parallel execution, bạn đang trả overhead đó mà không nhận speedup.
+Multiplier này không chỉ là về latency — nó còn là về cost. Single dispatch cho vn-trader phân tích một mã tốn khoảng 3-5k tokens. Team 3 agents làm cùng task: 12-18k tokens — dù output không tốt hơn đáng kể. Với Claude Max $100/month, bạn đang burn quota 3-4x nhanh hơn mà không nhận 3-4x kết quả. Nhân lên 20 tasks/ngày, bạn biết quota limit đánh lúc nào rồi đó.
+
+Single agent dispatch cho kết quả trong vài phút. Team dispatch với lead + 3 members: bạn cộng dồn latency của từng bước, plus orchestration overhead. Với tasks không cần parallel execution, bạn đang trả overhead đó mà không nhận speedup.
 
 ### Lead Agent Bottleneck
 
@@ -51,7 +51,7 @@ Trong team pattern, lead agent là điểm tắc nghẽn. Nó phải:
 5. Tổng hợp kết quả
 6. Handle nếu có member fail
 
-Theo kinh nghiệm cá nhân: với CrewAI (sử dụng default string chaining), bước 2 — decompose — là bước fail nhiều nhất. Task chaining truyền output dưới dạng raw string, mất structured information theo cách khó predict. CrewAI v0.30+ có hỗ trợ `output_pydantic` và `output_json` nhưng đó là opt-in, không phải default. Với AutoGen 0.2 (agentchat), failure mode phổ biến hơn là context insufficiency trong bước 3: lead agent pass không đủ context cho member — dẫn đến member "technically correct" nhưng không phù hợp với bức tranh tổng thể.
+Với CrewAI (default string chaining), bước 2 — decompose — là bước fail nhiều nhất. Task chaining truyền output dưới dạng raw string, mất structured information theo cách khó predict. CrewAI v0.30+ có hỗ trợ `output_pydantic` và `output_json` nhưng đó là opt-in, không phải default. Với AutoGen 0.2 (agentchat), failure mode phổ biến hơn là context insufficiency trong bước 3: lead agent pass không đủ context cho member — dẫn đến member "technically correct" nhưng không phù hợp với bức tranh tổng thể.
 
 Khi single agent tự làm hết, nó có toàn bộ context trong một working memory. Không có handoff, không có context loss giữa các bước.
 
@@ -61,7 +61,7 @@ Debug single agent trace: khó nhưng làm được. Bạn có một conversatio
 
 Debug inter-agent failure: một loại đau khổ khác hẳn. Tôi đã từng ngồi nhìn log lúc 11 giờ đêm với CrewAI, cố trace xem lead agent đã pass gì cho fundamental-analysis agent. Root cause cuối cùng rất nhỏ: lead agent quên include time range trong context — vì nó assume time range là "obvious" từ broader task description, nhưng member agent chỉ thấy sub-task instruction. Agent kia execute xong, trả về phân tích Q3/2024 thay vì Q1/2025, lead aggregate lại thành report với mixed timeframes. Không có error, không có warning — chỉ là output sai một cách yên lặng, và tôi chỉ phát hiện ra khi tự đọc kỹ con số và thấy chúng không khớp với market data ngay trước mắt.
 
-Đây là loại bug tôi gọi là **error amplification** — multi-agent có thể khuếch đại lỗi thay vì giảm thiểu. Cơ chế: trong pipeline sequential, nếu mỗi stage có error rate p và errors là independent, overall fidelity giảm theo `(1-p)^n`. Trong synthesis parallel, output sai từ một agent confident có thể dominate output đúng từ agent khác uncertain — đặc biệt nếu synthesis dùng naive LLM summarize thay vì majority vote hay weighted scoring. Đây là lý do human-in-the-loop checkpoints quan trọng hơn bạn nghĩ trong agentic workflows — không phải vì agent "không thông minh", mà vì error amplification là structural.
+Đây là **error amplification** — multi-agent khuếch đại lỗi thay vì giảm thiểu. Một agent sai, lead agent không catch, và bạn chỉ phát hiện khi tự ngồi đọc kỹ output. Đó là lý do human-in-the-loop checkpoints quan trọng hơn bạn nghĩ.
 
 ---
 
@@ -85,7 +85,7 @@ Hiện tại tôi đang vận hành 15 agents trên setup cá nhân: blogger, cl
 
 Duy trì 15 file CLAUDE.md riêng biệt không phải không có friction. Mỗi khi một agent bắt đầu drift — trả lời kiểu generalist thay vì đúng persona — tôi phải quay lại chỉnh context. Đó là overhead không thấy được khi nhìn vào danh sách agents trông có vẻ impressive.
 
-Hơn 90% tasks, tôi chỉ dispatch thẳng vào một agent cụ thể và nhận kết quả. Đây là bức tranh thật:
+Hơn 90% tasks, tôi chỉ dispatch thẳng vào một agent cụ thể và nhận kết quả. Hmmm. Đây là bức tranh thật:
 
 | Loại task | Phương thức dispatch thực tế |
 |---|---|
@@ -113,9 +113,9 @@ Tuần trước, tôi nhắn cho vn-trader "phân tích VIC hôm nay" — trong 
 
 Single agent đủ khi **task scope rõ ràng và agent có đủ skill + context để execute**. Bạn không cần đội khi một người giỏi đã đủ khả năng làm xong việc.
 
-Một lý do tôi và nhiều người khác từng nghĩ team là cần thiết là context window. Với Claude Opus 4.6 (Anthropic công bố 1M token context), limitation cũ về "context không đủ để xử lý task phức tạp" đã giảm thiểu đáng kể — dù không triệt để. 1M tokens có trade-offs riêng: "lost in the middle" — hiện tượng attention degradation với thông tin ở giữa context window, được document từ nghiên cứu 2023 — đã cải thiện nhiều trong các frontier models hiện tại nhờ architectural improvements, nhưng vẫn tồn tại ở mức độ nào đó với context thực sự dài. Và latency với context lớn vẫn cao hơn đáng kể.
+Một lý do nhiều người từng nghĩ team là cần thiết là context window. Với Claude Opus 4.6 (1M token context), limitation cũ về "context không đủ để xử lý task phức tạp" đã giảm thiểu đáng kể — dù "lost in the middle" vẫn còn tồn tại với context thực sự dài, và latency với context lớn vẫn cao hơn.
 
-Điều quan trọng hơn: multi-agent architectures không được tạo ra chủ yếu để workaround context window ngắn. AutoGPT (Mar 2023) focus vào tool use và action composition — agents cần dùng browser, code execution, external APIs để thực hiện long-horizon tasks. BabyAGI (Apr 2023) focus vào task management loop: create → prioritize → execute — một approach khác hẳn, không phải tool composition. Context window là một constraint trong số nhiều, không phải lý do chính của multi-agent. Ngay cả với 1M token context, parallelism, specialization, và cost optimization vẫn là lý do độc lập để dùng multi-agent — nhưng đó không có nghĩa là mặc định cần thiết cho mọi use case.
+Thực ra multi-agent không được tạo ra chủ yếu để workaround context window — parallelism, specialization, cost optimization mới là lý do chính. Nhưng điều đó không có nghĩa là mặc định cần thiết cho mọi use case.
 
 ---
 
@@ -157,11 +157,11 @@ Nếu bạn cần scan 10 mã cổ phiếu cùng lúc để ra quyết định p
 
 ### 3. Adversarial Validation Thực Sự
 
-Đây là case tôi thấy genuinely underrated, và cần nói thẳng về cơ chế.
+Đây là case tôi thấy genuinely underrated.
 
-**Self-review bằng prompt không tương đương với independent agent** — nhưng cũng cần hiểu đúng tại sao. Khi bạn prompt "hãy tự review lại output với vai trò người phản biện", agent review trong cùng context window với generation — có hiện tượng **in-context priming**: attention mechanism của transformer attend vào prior tokens, tạo structural bias về phía generation ban đầu. Independent agent có separate context window, không bị prime bởi generation context đó.
+**Self-review bằng prompt không tương đương với independent agent** — vì self-review trong cùng conversation thì nó thiên vị output trước đó. Giống như tự chấm bài mình: bạn biết mình muốn nói gì, nên dễ "thấy" câu đã đủ ý dù thực ra còn thiếu.
 
-Tuy nhiên: separate context window là điều kiện cần, không phải điều kiện đủ. Nếu bạn chỉ spin up agent giống hệt với prompt "review cái này", nó vẫn share training biases của cùng base model. True adversarial validation cần deliberate engineering — different system prompt với framing phản biện thực sự, không phải chỉ là "please check your work."
+Nhưng chỉ spin up agent giống hệt rồi bảo "review cái này" cũng chưa đủ — nó vẫn share training biases của cùng base model. True adversarial validation cần system prompt với framing phản biện thực sự, không phải "please check your work."
 
 Bài này được review bởi vài agents với specific critique roles khác nhau. Kết quả bạn đang đọc là sau khi apply feedback đó. Liệu chất lượng có tốt hơn không — tôi thành thật không chắc. Một số feedback cực kỳ có giá trị, một số phản biện những điều mà tôi vẫn cho là đúng. Đây là điểm tôi vẫn đang figure out.
 
