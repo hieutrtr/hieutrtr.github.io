@@ -164,6 +164,32 @@ The honest trade-off: build your own harness and you get full control over the s
 
 ---
 
+## OpenClaw: What Context-Level Agent Definition Looks Like Without Security Infrastructure
+
+Both Managed Agents and Deep Agents Deploy share a core concept: define the agent at the context level — identity, skills, and knowledge in structured files, not in code. OpenClaw, a community-driven agent framework, arrived at the same architectural conclusion independently.
+
+OpenClaw defines agents the same way: an agent is an identity plus a set of skills loaded from ClawHub, its community skills registry. The concept maps directly onto `AGENTS.md` + `SKILL.md` or Managed Agents' Brain configuration. Same idea, different execution context.
+
+The difference is what came with it — or rather, what didn't.
+
+In February 2026, a supply chain attack targeting ClawHub (dubbed "ClawHavoc") was disclosed. Attackers had compromised 12 publisher accounts and published 1,184 malicious skills. Once loaded into an agent's context, these skills could exfiltrate credentials, redirect tool calls, or poison the agent's reasoning. The attack had been active for an undisclosed period before discovery.
+
+Security research from Snyk reinforced the scope of the problem: their ToxicSkills report found that 36.8% of ClawHub skills contained some form of vulnerability, with 13.4% rated critical severity.
+
+This isn't a criticism of OpenClaw's architectural concept — defining agents at the context level is sound. It's evidence of what the concept requires to be viable in production: a trust model for the skill supply chain, credential isolation so loaded skills can't reach authentication tokens, and audit infrastructure that logs what ran and when.
+
+The contrast with the enterprise platforms is instructive:
+
+| | Supply chain model | Credential isolation | Skill source |
+|---|---|---|---|
+| **OpenClaw** | Open community registry (ClawHub) | Not enforced | Runtime-loaded from untrusted publishers |
+| **Deep Agents Deploy** | Files you control | Sandbox abstraction | Local `SKILL.md` files |
+| **Managed Agents** | Platform-vetted, closed | Brain/Hands separation by design | Configured within the platform |
+
+ClawHavoc is a useful grounding for the security argument above: context-level agent definition isn't inherently a security risk. The risk is loading skills from an unaudited community registry into an execution context that has credential access. The architectural pattern is separable from the security failure — but only if the infrastructure underneath it takes the threat seriously.
+
+---
+
 ## AgentOS: The Research Layer Taking Shape
 
 Both academia and industry are converging on the same set of primitives, though naming them differently.

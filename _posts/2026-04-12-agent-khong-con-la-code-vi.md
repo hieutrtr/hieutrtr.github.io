@@ -163,6 +163,32 @@ Bạn hoàn toàn có thể đạt mức cách ly tương tự khi tự xây har
 
 ---
 
+## OpenClaw: Khi Định Nghĩa Agent Ở Tầng Context Không Đi Kèm Hạ Tầng Bảo Mật
+
+Cả Managed Agents lẫn Deep Agents Deploy đều chia sẻ một concept cốt lõi: định nghĩa agent ở tầng context — danh tính, kỹ năng, kiến thức trong các tệp có cấu trúc, không phải trong code. OpenClaw, một framework agent do cộng đồng phát triển, đã đến cùng kết luận kiến trúc này theo con đường riêng.
+
+OpenClaw định nghĩa agent theo cùng cách: một agent là danh tính cộng với tập kỹ năng tải từ ClawHub — kho kỹ năng cộng đồng của nó. Concept ánh xạ trực tiếp vào `AGENTS.md` + `SKILL.md` hay cấu hình Brain của Managed Agents. Cùng ý tưởng, khác ngữ cảnh thực thi.
+
+Điểm khác biệt nằm ở những gì đi kèm — hoặc chính xác hơn, những gì không đi kèm.
+
+Tháng 2/2026, một cuộc tấn công chuỗi cung ứng nhắm vào ClawHub (được gọi là "ClawHavoc") được tiết lộ. Kẻ tấn công đã xâm phạm 12 tài khoản publisher và đăng tải 1.184 kỹ năng độc hại. Một khi được nạp vào context của agent, các kỹ năng này có thể rò rỉ thông tin xác thực, chuyển hướng lệnh gọi công cụ, hoặc nhiễm độc suy luận của agent. Cuộc tấn công đã hoạt động trong một khoảng thời gian chưa xác định trước khi bị phát hiện.
+
+Nghiên cứu bảo mật từ Snyk củng cố thêm quy mô của vấn đề: báo cáo ToxicSkills phát hiện 36,8% kỹ năng trên ClawHub có lỗ hổng ở dạng nào đó, với 13,4% được đánh giá ở mức nghiêm trọng (critical).
+
+Đây không phải là phê phán concept kiến trúc của OpenClaw — ý tưởng định nghĩa agent ở tầng context là đúng đắn. Đây là bằng chứng về những gì concept đó cần để khả thi trong môi trường sản phẩm: một mô hình tin cậy cho chuỗi cung ứng kỹ năng, cách ly thông tin xác thực để kỹ năng được nạp không thể truy cập token xác thực, và hạ tầng kiểm toán ghi lại kỹ năng nào đã chạy và khi nào.
+
+So sánh giữa ba cách tiếp cận:
+
+| | Mô hình chuỗi cung ứng | Cách ly thông tin xác thực | Nguồn kỹ năng |
+|---|---|---|---|
+| **OpenClaw** | Registry cộng đồng mở (ClawHub) | Không bắt buộc | Tải lúc runtime từ publisher chưa kiểm tra |
+| **Deep Agents Deploy** | Tệp bạn kiểm soát | Lớp trừu tượng sandbox | Tệp `SKILL.md` cục bộ |
+| **Managed Agents** | Nền tảng kiểm soát, đóng | Tách Brain/Hands theo thiết kế | Cấu hình trong nền tảng |
+
+ClawHavoc là căn cứ thực tế hữu ích cho phần bảo mật ở trên: định nghĩa agent ở tầng context không phải rủi ro bảo mật tự thân. Rủi ro là nạp kỹ năng từ registry cộng đồng không được kiểm tra vào ngữ cảnh thực thi có quyền truy cập thông tin xác thực. Mẫu kiến trúc tách biệt với sự cố bảo mật — nhưng chỉ khi hạ tầng bên dưới nó xử lý nghiêm túc mối đe dọa đó.
+
+---
+
 ## AgentOS: Tầng Nghiên Cứu Đang Hình Thành
 
 Cả giới học thuật lẫn ngành công nghiệp đều đang hội tụ về cùng một bộ thành phần cơ bản, dù gọi tên khác nhau.
