@@ -152,11 +152,15 @@ This cuts both ways. It's a caution against premature context harness adoption j
 
 One concrete reason this shift is happening isn't philosophical — it's practical security.
 
-In the old coupled design, any code Claude generates runs in the same container as its credentials. A successful prompt injection doesn't just compromise one task — it potentially exposes *everything* that agent can do.
+In a coupled design, code that an agent generates or executes runs in the same process space as its credentials. A successful prompt injection in that scenario doesn't just compromise one task — it potentially exposes everything that agent can access.
 
-Managed Agents' Brain/Hands separation directly addresses this: the sandbox where generated code runs has no access to authentication tokens. Compromise the sandbox, get nothing useful. Deep Agents Deploy enforces similar isolation through its sandbox provider abstraction.
+Credential isolation addresses this directly. It's not a new concept: service meshes, secret managers like Vault, and per-service IAM roles have applied this principle for years. The pattern is well understood — limit what any given execution context can reach.
 
-This kind of isolation was possible before, but you had to architect it yourself. Most teams didn't because it was hard. Context harness platforms make it the default. That alone is a meaningful improvement for production deployments handling sensitive operations.
+Managed Agents' Brain/Hands separation applies this principle to agent architecture: the sandbox where generated code runs has no access to authentication tokens. Deep Agents Deploy enforces similar isolation through its sandbox provider abstraction.
+
+You can achieve the same isolation when building your own harness — the pattern is architectural, not proprietary. Teams that already take security seriously in their own infra do this. The difference is packaging: context harness platforms make credential isolation the default rather than a deliberate design decision. That's a real convenience benefit, not a claim that self-built systems are inherently less secure.
+
+The honest trade-off: build your own harness and you get full control over the security model, at the cost of designing and maintaining it yourself. Use a platform harness and you get a tested default, at the cost of depending on the platform's security assumptions. Neither is strictly better — they're different bets on where to spend the effort.
 
 ---
 

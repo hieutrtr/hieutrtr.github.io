@@ -151,11 +151,15 @@ Nguyên tắc thứ hai: *"find the simplest solution possible, and only increas
 
 Một lý do cụ thể shift này xảy ra không phải philosophical — mà là practical security.
 
-Trong coupled design cũ, bất kỳ code nào Claude generate đều chạy trong cùng container với credentials. Một prompt injection thành công không chỉ compromise một task — mà potentially expose *mọi thứ* agent đó có thể làm.
+Trong coupled design, code mà agent generate hoặc execute chạy trong cùng process space với credentials. Một prompt injection thành công trong scenario đó không chỉ compromise một task — mà potentially expose mọi thứ agent đó có thể access.
 
-Brain/Hands separation của Managed Agents trực tiếp giải quyết điều này: sandbox nơi generated code chạy không có access vào authentication tokens. Compromise sandbox, không thu được gì hữu ích. Deep Agents Deploy enforce isolation tương tự thông qua sandbox provider abstraction.
+Credential isolation giải quyết điều này trực tiếp. Đây không phải concept mới: service meshes, secret managers như Vault, per-service IAM roles đã apply nguyên tắc này từ lâu. Pattern rất well-understood — giới hạn những gì một execution context cụ thể có thể reach.
 
-Loại isolation này từng có thể làm trước đây, nhưng phải tự architect. Hầu hết team không làm vì nó khó. Context harness platforms biến nó thành mặc định. Đây một mình đã là meaningful improvement cho production deployments handling sensitive operations.
+Brain/Hands separation của Managed Agents apply nguyên tắc này vào agent architecture: sandbox nơi generated code chạy không có access vào authentication tokens. Deep Agents Deploy enforce isolation tương tự thông qua sandbox provider abstraction.
+
+Bạn hoàn toàn có thể đạt isolation tương tự khi tự build harness — pattern là architectural, không phải proprietary. Các team đã quan tâm đến security trong infra của mình thường đã làm điều này rồi. Sự khác biệt nằm ở packaging: context harness platforms biến credential isolation thành mặc định thay vì một design decision cần chủ động thực hiện. Đó là convenience benefit thực sự, không phải claim rằng self-built systems kém secure hơn.
+
+Trade-off trung thực hơn: tự build harness thì có full control over security model, đổi lại là effort để design và maintain nó. Dùng platform harness thì có một tested default, đổi lại là phụ thuộc vào security assumptions của platform. Không cái nào tốt hơn tuyệt đối — chúng là những bet khác nhau về việc đầu tư effort vào đâu.
 
 ---
 
