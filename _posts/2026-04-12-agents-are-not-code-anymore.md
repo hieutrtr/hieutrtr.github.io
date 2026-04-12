@@ -184,13 +184,13 @@ The **AgenticOS 2026 Workshop** (co-located with ASPLOS 2026) signals academia i
 
 Given this stack, the question replaces "which framework?" with "which layer?"
 
-**Build at the Control Plane (LangGraph / Claude Agent SDK) when:**
+**Build with low-level frameworks (LangGraph / Claude Agent SDK) when:**
 - Your routing logic is genuinely novel or domain-specific
 - You need tight control over state transitions — financial workflows, auditability requirements
 - You're building infrastructure that others will deploy agents on top of
 - You're doing research on agent architectures, not deploying a product
 
-**Build at the Context Harness layer (Managed Agents / Deep Agents Deploy) when:**
+**Build with managed platforms (Managed Agents / Deep Agents Deploy) when:**
 - You're deploying an agent with a specific, well-defined purpose
 - Security and credential isolation are requirements, not nice-to-haves
 - You need multi-protocol support without custom integration work

@@ -183,13 +183,13 @@ AIOS demonstrate 2.1x faster execution khi serve multiple agents so với naive 
 
 Với stack này, câu hỏi thay thế "framework nào?" bằng "layer nào?"
 
-**Build ở Control Plane (LangGraph / Claude Agent SDK) khi:**
+**Build với low-level frameworks (LangGraph / Claude Agent SDK) khi:**
 - Routing logic của bạn genuinely novel hoặc domain-specific
 - Cần tight control over state transitions — financial workflows, auditability requirements
 - Bạn đang build infrastructure mà người khác sẽ deploy agents lên trên
 - Bạn đang research agent architectures, không phải deploy sản phẩm
 
-**Build ở Context Harness layer (Managed Agents / Deep Agents Deploy) khi:**
+**Build với managed platforms (Managed Agents / Deep Agents Deploy) khi:**
 - Deploy agent với mục đích cụ thể, well-defined
 - Security và credential isolation là requirement, không phải nice-to-have
 - Cần multi-protocol support không có custom integration work
