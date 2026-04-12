@@ -43,33 +43,45 @@ Nguyên tắc cốt lõi Anthropic nhấn mạnh: **bắt đầu ở mức thấ
 
 ---
 
-## Stack Hiện Tại: Bốn Tầng Trong Thực Tế
+## Stack Hiện Tại: Một Spectrum Từ Thấp Đến Cao
 
-Đến tháng 4/2026, hệ sinh thái đã phát triển thành khoảng thế này:
+*(Phần dưới là một mental model để phân tích hệ sinh thái — không phải taxonomy chính thức hay industry standard đã được confirm. Các "tầng" này không có ranh giới rõ ràng; chúng là các vị trí trên một spectrum từ "tự build nhiều" đến "chỉ cần configure".)*
 
-```
-┌─────────────────────────────────────────┐
-│  Agent Definition Layer                 │  ← AGENTS.md + SKILL.md
-│  (developer viết gì)                   │     identity, skills, context
-├─────────────────────────────────────────┤
-│  Context Harness Layer                  │  ← Deep Agents Deploy, Managed Agents
-│  (opinionated platform)                │     memory, sandboxing, multi-protocol
-├─────────────────────────────────────────┤
-│  AgentOS Layer                          │  ← AIOS, emerging primitives
-│  (infrastructure primitives)           │     scheduling, isolation, storage, access
-├─────────────────────────────────────────┤
-│  Control Plane Layer                    │  ← LangGraph, Claude Agent SDK
-│  (low-level orchestration)             │     graphs, state machines, raw API
-└─────────────────────────────────────────┘
-```
+Hãy nghĩ như một cái dial: từ "viết mọi thứ bằng code" đến "chỉ mô tả agent là gì":
 
-Trước 2026, hầu hết developer chỉ làm việc với hai tầng dưới. Hai tầng trên là additions mới hơn — và hai release tháng 4 đang chủ yếu build out Context Harness layer.
+**Thấp nhất — Tự viết toàn bộ orchestration**
 
-Analogy với computing:
-- Control Plane ↔ bare-metal / hypervisor — full power, full responsibility
-- AgentOS ↔ OS kernel — process isolation, scheduling, resource management
-- Context Harness ↔ container runtime (Docker) — opinionated packaging của các tầng bên dưới
-- Agent Definition ↔ application code — developer viết agent *là gì*, không phải execute như thế nào
+Bạn gọi LLM API trực tiếp, tự wire tool execution, tự quản lý state, tự handle retry. Mọi quyết định về routing, memory, error handling đều nằm trong code bạn viết và bạn sở hữu.
+
+*Công cụ: LangGraph, Claude Agent SDK, raw Anthropic/OpenAI API*
+
+*Ví dụ: Bạn tự viết LangGraph graph bằng Python — nodes cho từng bước, edges cho routing, state management tường minh. Toàn quyền kiểm soát, toàn bộ trách nhiệm.*
+
+**Giữa — Framework lo phần cơ sở hạ tầng**
+
+Framework cung cấp các abstraction (agents, chains, memory) và quản lý vòng lặp gọi LLM. Bạn tập trung vào tool configuration và agent logic, không phải raw API. Vẫn nặng về code, nhưng có guardrails.
+
+*Ví dụ: LangChain agents với built-in memory và tool abstractions. Bạn viết chains và tools; framework lo orchestration.*
+
+**Cao hơn — Platform lo deployment và runtime**
+
+Bạn mô tả *agent là ai* — vai trò, kỹ năng, kiến thức — trong các file có cấu trúc. Platform tự lo deploy, memory, sandboxing, credential isolation, và protocol support. Thứ từng mất một tuần để setup nay chỉ là một lệnh.
+
+*Ví dụ (Deep Agents Deploy): Bạn viết `AGENTS.md` (identity và behavior bằng plain markdown) và `SKILL.md` files (domain knowledge load on demand). Chạy `deepagents deploy`. Platform lo toàn bộ memory, sandboxing, và server MCP + A2A + Agent Protocol.*
+
+*Ví dụ (Claude Managed Agents): Bạn configure agent làm gì. Infrastructure của Anthropic tách Brain (Claude + control logic) khỏi Hands (execution sandbox không có access vào credentials). Một append-only session log đóng vai trò external memory bền vững — nếu Brain crash giữa task, instance mới tiếp tục từ event cuối.*
+
+**Cao nhất — Chỉ cần prompt, không cần infrastructure**
+
+Model được prompt tốt với tools phù hợp. Không custom orchestration, không deployment pipeline — chỉ system prompt và tool list.
+
+*Ví dụ: Một Claude instance với search và code interpreter. Được prompt kỹ, phạm vi rõ ràng, dễ debug.*
+
+---
+
+Hai release tháng 4 — Managed Agents và Deep Agents Deploy — nằm ở vùng "cao hơn" trên spectrum này. Chúng không loại bỏ code hoàn toàn. Nhưng chúng kéo một phần lớn công việc (memory management, credential isolation, multi-protocol support, sandboxing) ra khỏi application code và đưa vào platform infrastructure.
+
+Trước 2026, xây dựng tương đương "credential-isolated sandbox + append-only session log + MCP/A2A/Agent Protocol server" sẽ mất khoảng một tuần setup infrastructure. Các platform này biến điều đó thành mặc định.
 
 ---
 

@@ -44,33 +44,45 @@ The key principle Anthropic emphasizes: **start at the lowest level that works a
 
 ---
 
-## The Current Stack: Four Layers in Practice
+## The Current Stack: A Spectrum of Abstraction
 
-By April 2026, the ecosystem has grown into something like this:
+*(What follows is a mental model for thinking about the ecosystem — not an established industry standard or official taxonomy. The "layers" below aren't clean boundaries; they're positions on a spectrum of how much you build versus how much you configure.)*
 
-```
-┌─────────────────────────────────────────┐
-│  Agent Definition Layer                 │  ← AGENTS.md + SKILL.md
-│  (what developer writes)               │     identity, skills, context
-├─────────────────────────────────────────┤
-│  Context Harness Layer                  │  ← Deep Agents Deploy, Managed Agents
-│  (opinionated platform)                │     memory, sandboxing, multi-protocol
-├─────────────────────────────────────────┤
-│  AgentOS Layer                          │  ← AIOS, emerging primitives
-│  (infrastructure primitives)           │     scheduling, isolation, storage, access
-├─────────────────────────────────────────┤
-│  Control Plane Layer                    │  ← LangGraph, Claude Agent SDK
-│  (low-level orchestration)             │     graphs, state machines, raw API
-└─────────────────────────────────────────┘
-```
+Think of it as a dial from "write everything in code" to "just describe what the agent is":
 
-Before 2026, most developers were only working with the bottom two layers. The top two are newer additions — and the two April releases are primarily building out the Context Harness layer.
+**Low end — You write the orchestration directly**
 
-The analogy to computing holds reasonably well:
-- Control Plane ↔ bare-metal / hypervisor — full power, full responsibility
-- AgentOS ↔ OS kernel — process isolation, scheduling, resource management
-- Context Harness ↔ container runtime (Docker) — opinionated packaging of the layers below
-- Agent Definition ↔ application code — developer writes what the agent *is*, not how it executes
+You're calling LLM APIs, wiring tool execution, managing state, and handling retries in code you own. Every decision about routing, memory, and error handling is explicit in your codebase.
+
+*Tools: LangGraph, Claude Agent SDK, raw Anthropic/OpenAI API*
+
+*Example: You write a LangGraph graph in Python — nodes for each step, edges for routing, explicit state management. Full control, full responsibility.*
+
+**Middle — A framework handles the plumbing**
+
+The framework provides abstractions (agents, chains, memory) and manages the LLM call loop. You focus on tool configuration and agent logic, not raw API bookkeeping. Still code-heavy, but with guardrails.
+
+*Example: LangChain agents with built-in memory and tool abstractions. You write chains and tools; the framework handles orchestration.*
+
+**Upper middle — A platform owns deployment and runtime**
+
+You describe *who the agent is* — its role, skills, and knowledge — in structured files. The platform handles deployment, memory, sandboxing, credential isolation, and protocol support. What used to take a week of infrastructure work becomes a single command.
+
+*Example (Deep Agents Deploy): You write `AGENTS.md` (identity and behavior in plain markdown) and `SKILL.md` files (domain knowledge loaded on demand). Run `deepagents deploy`. The platform handles memory, sandboxing, and serves MCP + A2A + Agent Protocol endpoints.*
+
+*Example (Claude Managed Agents): You configure what the agent does. Anthropic's infrastructure separates the Brain (Claude + control logic) from the Hands (execution sandbox with no credential access). An append-only session log acts as durable external memory — if the Brain crashes mid-task, a new instance resumes from the last event.*
+
+**High end — Pure configuration, no custom infrastructure**
+
+A well-prompted model with the right tools. No custom orchestration, no deployment pipeline — just a system prompt and a tool list.
+
+*Example: A Claude instance with search and a code interpreter. Well-prompted, tightly scoped, easy to debug.*
+
+---
+
+The two April releases — Managed Agents and Deep Agents Deploy — sit in the "upper middle" range. They're not eliminating code entirely. But they pull a substantial chunk of work (memory management, credential isolation, multi-protocol support, sandboxing) out of application code and into platform infrastructure.
+
+Before 2026, building the equivalent of "credential-isolated sandbox + append-only session log + MCP/A2A/Agent Protocol server" would take a week of infrastructure setup. These platforms make it the default.
 
 ---
 
