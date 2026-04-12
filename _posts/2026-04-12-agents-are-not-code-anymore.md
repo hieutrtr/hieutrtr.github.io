@@ -182,7 +182,9 @@ The **AgenticOS 2026 Workshop** (co-located with ASPLOS 2026) signals academia i
 
 ## Where Should You Actually Build?
 
-Given this stack, the question replaces "which framework?" with "which layer?"
+This question actually splits into two — and they're easy to conflate:
+
+**Question 1: Which tooling/platform?** (position on the spectrum)
 
 **Build with low-level frameworks (LangGraph / Claude Agent SDK) when:**
 - Your routing logic is genuinely novel or domain-specific
@@ -197,10 +199,11 @@ Given this stack, the question replaces "which framework?" with "which layer?"
 - Your bottleneck is deployment and operations, not agent reasoning design
 - You want the agent's definition to be readable and modifiable by non-engineers
 
-**Stay at Level 1 (augmented LLM) when:**
-- The task is well-scoped and a single well-prompted agent with good tools can handle it
-- Adding workflow complexity wouldn't measurably improve output quality
-- You want predictable behavior and simple debugging
+**Question 2: How much orchestration does the agent actually need?** (Anthropic's 3 levels — a separate axis)
+
+Anthropic's progression — Augmented LLM → Workflows → Agents — describes agent *complexity*, not platform choice. A managed platform can run a Level 1 agent. A custom LangGraph harness can implement Level 3 patterns. The two axes are orthogonal.
+
+The default answer on this axis: **start at Level 1 and only add complexity when you can measure the improvement.** Most problems that seem to need multi-agent workflows can be handled by a single well-prompted model with the right tools. Adding Level 2 workflow patterns or Level 3 autonomous control is only worth it when performance measurably improves — regardless of which platform you're on.
 
 **The most interesting case is hybrid:** custom execution logic on LangGraph, fronted by a harness-compatible deployment format. Deep Agents Deploy already supports this — `deepagents deploy` can front a custom LangGraph backend while providing standard endpoints and memory management. You get opinionated deployment without giving up orchestration control.
 

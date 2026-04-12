@@ -181,7 +181,9 @@ AIOS demonstrate 2.1x faster execution khi serve multiple agents so với naive 
 
 ## Build Ở Layer Nào?
 
-Với stack này, câu hỏi thay thế "framework nào?" bằng "layer nào?"
+Câu hỏi này thực ra tách làm hai — và rất dễ bị nhầm lẫn với nhau:
+
+**Câu hỏi 1: Tooling/platform nào?** (vị trí trên spectrum)
 
 **Build với low-level frameworks (LangGraph / Claude Agent SDK) khi:**
 - Routing logic của bạn genuinely novel hoặc domain-specific
@@ -196,10 +198,11 @@ Với stack này, câu hỏi thay thế "framework nào?" bằng "layer nào?"
 - Bottleneck của team là deployment và operations, không phải agent reasoning design
 - Muốn agent definition đọc được và sửa được bởi non-engineers
 
-**Ở lại Mức 1 (augmented LLM) khi:**
-- Task well-scoped và một single well-prompted agent với good tools có thể handle
-- Thêm workflow complexity sẽ không measurably cải thiện output quality
-- Bạn muốn predictable behavior và simple debugging
+**Câu hỏi 2: Agent thực sự cần bao nhiêu orchestration?** (3 mức của Anthropic — một trục riêng biệt)
+
+Progression của Anthropic — Augmented LLM → Workflows → Agents — mô tả *complexity* của agent, không phải platform choice. Một managed platform hoàn toàn có thể chạy một Mức 1 agent. Một custom LangGraph harness hoàn toàn có thể implement Mức 3 patterns. Hai trục này độc lập với nhau.
+
+Câu trả lời mặc định trên trục này: **bắt đầu ở Mức 1 và chỉ tăng complexity khi có thể đo được cải thiện.** Hầu hết các vấn đề tưởng như cần multi-agent workflow thực ra có thể handle bởi một single well-prompted model với right tools. Thêm Level 2 workflow patterns hay Level 3 autonomous control chỉ đáng khi performance measurably cải thiện — bất kể bạn đang dùng platform nào.
 
 **Case thú vị nhất là hybrid:** custom execution logic trên LangGraph, fronted bởi harness-compatible deployment format. Deep Agents Deploy đã support điều này — `deepagents deploy` có thể front một custom LangGraph backend trong khi vẫn provide standard endpoints và memory management. Bạn có opinionated deployment mà không mất orchestration control.
 
