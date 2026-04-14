@@ -136,3 +136,7 @@ Tôi không có position về việc Claude có consciousness hay không. Nhưng
 ---
 
 *Paper gốc: "Emotion Concepts and Their Function in a Large Language Model" — Nicholas Sofroniew, Isaac Kauvar, William Saunders, et al. (Anthropic Interpretability Team), April 2, 2026.*
+
+---
+
+*Nếu bài viết có ích, kết nối với mình trên [LinkedIn](https://www.linkedin.com/in/hieu-tran-data/) hoặc xem thêm các project tại [GitHub](https://github.com/hieutrtr/).*

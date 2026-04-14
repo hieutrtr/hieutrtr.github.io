@@ -562,3 +562,7 @@ Không phải bỏ BMAD hay methodology hiện tại — dùng methodology đó 
 ---
 
 *Bài viết này dựa trên kinh nghiệm thực tế sau vài tuần research và testing. YMMV (Your Mileage May Vary) — nhưng nếu token economics là concern của bạn, composition patterns này đáng thử.*
+
+---
+
+*Nếu bài viết có ích, kết nối với mình trên [LinkedIn](https://www.linkedin.com/in/hieu-tran-data/) hoặc xem thêm các project tại [GitHub](https://github.com/hieutrtr/).*

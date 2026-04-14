@@ -388,3 +388,7 @@ Quyết định thiết kế cốt lõi trong LangGraph là `PregelProtocol` là
 Xây dựng các agent của bạn như các đồ thị độc lập. Triển khai chúng riêng rẽ. Kết nối chúng với một orchestrator coi mỗi cái như chỉ là một node bình thường. Streaming, interrupt, checkpointing, và xử lý lỗi hoạt động xuyên ranh giới mà không cần thêm code.
 
 Khoảng cách giữa "nó chạy trên laptop của tôi" và "nó chạy trong production xuyên năm dịch vụ" nhỏ hơn bạn nghĩ.
+
+---
+
+*Nếu bài viết có ích, kết nối với mình trên [LinkedIn](https://www.linkedin.com/in/hieu-tran-data/) hoặc xem thêm các project tại [GitHub](https://github.com/hieutrtr/).*

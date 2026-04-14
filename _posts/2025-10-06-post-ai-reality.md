@@ -81,3 +81,7 @@ The AI bubble will pop not because AI fails, but because capital efficiency fail
 - 🎨 Prompt jockeys and hype coders will vanish.
 
 Yes, opportunities remain — but they will belong to engineers who can handle scarcity, justify cost, and think systemically, not those riding the hype curve.
+
+---
+
+*If you found this useful, feel free to connect on [LinkedIn](https://www.linkedin.com/in/hieu-tran-data/) or check out my projects on [GitHub](https://github.com/hieutrtr/).*

@@ -168,3 +168,6 @@ Because if an AI is going to drive your repo, you’d better make sure it knows 
 | **Lovable (App Builder)** | Yes — Undo & Version History | App versions (code + UI state within platform) | Version timeline; revert to prior version | Single agent builds and refines app | One-click deploy; no explicit subagents | Friendly for non-coders; version history acts like checkpoints for whole app |
 
 > Quick takeaway: **Claude Code 2.0, VS Code, Replit, Cursor, and Windsurf** give you **built-in, one-click (or one-command) rollbacks**. **Aider and Continue** lean on **Git** and disciplined workflow for checkpoints. **Claude Code 2.0** is currently the only widely available tool that combines **automatic checkpoints with subagents, hooks, and background tasks** to enable safer autonomous workflows.
+---
+
+*If you found this useful, feel free to connect on [LinkedIn](https://www.linkedin.com/in/hieu-tran-data/) or check out my projects on [GitHub](https://github.com/hieutrtr/).*

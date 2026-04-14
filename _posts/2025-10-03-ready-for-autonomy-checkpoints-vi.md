@@ -173,3 +173,7 @@ Bởi vì nếu AI sẽ lái repo của bạn, hãy đảm bảo nó biết các
 | **Lovable (App Builder)** | Có — Hoàn tác & lịch sử phiên bản | Phiên bản ứng dụng (code + trạng thái UI trong nền tảng) | Dòng thời gian phiên bản; tua về phiên bản trước | Một tác nhân xây dựng và tinh chỉnh ứng dụng | Triển khai một cú nhấp; không có tác nhân phụ riêng | Thân thiện với người không lập trình; lịch sử phiên bản giống checkpoint cho toàn bộ ứng dụng | 
 
 > Tóm tắt nhanh: **Claude Code 2.0, VS Code, Replit, Cursor và Windsurf** mang lại **khả năng tua ngược một chạm (hoặc một lệnh)**. **Aider và Continue** dựa vào **Git** và quy trình kỷ luật. **Claude Code 2.0** hiện là công cụ phổ biến duy nhất kết hợp **Checkpoints tự động cùng tác nhân phụ, hook và tác vụ nền** để hiện thực hoá quy trình Autonomy an toàn.
+
+---
+
+*Nếu bài viết có ích, kết nối với mình trên [LinkedIn](https://www.linkedin.com/in/hieu-tran-data/) hoặc xem thêm các project tại [GitHub](https://github.com/hieutrtr/).*

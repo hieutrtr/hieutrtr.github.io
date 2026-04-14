@@ -602,3 +602,7 @@ Your chunking strategy matters. Your embedding model matters. But if you're burn
 - [How Query Expansion (HyDE) Boosts RAG Accuracy - Chitika](https://www.chitika.com/hyde-query-expansion-rag/)
 - [HyDE + Query Expansion: Supercharging Retrieval in RAG Pipelines - Medium](https://medium.com/theultimateinterviewhack/hyde-query-expansion-supercharging-retrieval-in-rag-pipelines-f200955929f1)
 - [Better RAG with HyDE - Hypothetical Document Embeddings - Zilliz Learn](https://zilliz.com/learn/improve-rag-and-information-retrieval-with-hyde-hypothetical-document-embeddings)
+
+---
+
+*If you found this useful, feel free to connect on [LinkedIn](https://www.linkedin.com/in/hieu-tran-data/) or check out my projects on [GitHub](https://github.com/hieutrtr/).*

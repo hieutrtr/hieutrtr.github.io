@@ -273,3 +273,7 @@ Managed Agents và Deep Agents Deploy là các platform thật với giá trị 
 - [AIOS: LLM Agent Operating System — arXiv](https://arxiv.org/abs/2403.16971)
 - [AgenticOS 2026 Workshop — os-for-agent.github.io](https://os-for-agent.github.io/)
 - [2025 Was Agents. 2026 Is Agent Harnesses — Aakash Gupta, Medium](https://aakashgupta.medium.com/2025-was-agents-2026-is-agent-harnesses-heres-why-that-changes-everything-073e9877655e)
+
+---
+
+*Nếu bài viết có ích, kết nối với mình trên [LinkedIn](https://www.linkedin.com/in/hieu-tran-data/) hoặc xem thêm các project tại [GitHub](https://github.com/hieutrtr/).*

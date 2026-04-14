@@ -149,3 +149,7 @@ If you are building:
 - an evaluated reasoning system that must comply with policies,
 
 then AgentKit gives you the shortest, safest path to production.
+
+---
+
+*If you found this useful, feel free to connect on [LinkedIn](https://www.linkedin.com/in/hieu-tran-data/) or check out my projects on [GitHub](https://github.com/hieutrtr/).*

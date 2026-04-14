@@ -281,3 +281,7 @@ Và khi bạn có feedback loop rõ ràng, AI không chỉ generate code — nó
 ---
 
 *Tôi vận hành bridge-bot system với ~15 agents, dispatch hàng chục tasks mỗi ngày. Mọi observation trong bài đến từ experience trực tiếp — không phải benchmark, không phải paper.*
+
+---
+
+*Nếu bài viết có ích, kết nối với mình trên [LinkedIn](https://www.linkedin.com/in/hieu-tran-data/) hoặc xem thêm các project tại [GitHub](https://github.com/hieutrtr/).*

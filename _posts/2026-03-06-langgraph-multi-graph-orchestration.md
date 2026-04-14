@@ -388,3 +388,7 @@ The key design decision in LangGraph is that `PregelProtocol` is the universal i
 Build your agents as independent graphs. Deploy them separately. Wire them together with an orchestrator that treats each one as just another node. Streaming, interrupts, checkpointing, and error handling work across the boundaries without additional code.
 
 The gap between "it works on my laptop" and "it works in production across five services" is smaller than you'd expect.
+
+---
+
+*If you found this useful, feel free to connect on [LinkedIn](https://www.linkedin.com/in/hieu-tran-data/) or check out my projects on [GitHub](https://github.com/hieutrtr/).*

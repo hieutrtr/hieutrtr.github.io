@@ -149,3 +149,7 @@ If you’ve read this far, here’s the short version:
 
 That’s where I’m putting my energy.
 Because when the noise fades — and it will — those who can make AI efficient, measurable, and useful will define the next chapter of this industry.
+
+---
+
+*If you found this useful, feel free to connect on [LinkedIn](https://www.linkedin.com/in/hieu-tran-data/) or check out my projects on [GitHub](https://github.com/hieutrtr/).*

@@ -367,3 +367,7 @@ Your choice which path to take. Both valid. Outcomes different.
 ---
 
 **Tags:** #SpecDrivenDevelopment #AIAgents #EnterpriseDev #SDLC #DeveloperProductivity #OrganizationalTransformation
+
+---
+
+*Nếu bài viết có ích, kết nối với mình trên [LinkedIn](https://www.linkedin.com/in/hieu-tran-data/) hoặc xem thêm các project tại [GitHub](https://github.com/hieutrtr/).*

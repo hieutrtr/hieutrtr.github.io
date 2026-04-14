@@ -452,3 +452,6 @@ The market opportunity is massive. The technology is ready. The question is whet
 - [A Practical Guide for Designing Production-Grade Agentic AI Workflows](https://arxiv.org/abs/2512.08769)
 - [Safety & Guardrails for Agentic AI Systems: A Practitioner's Blueprint](https://skywork.ai/blog/agentic-ai-safety-best-practices-2025-enterprise/)
 - [OWASP Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
+---
+
+*If you found this useful, feel free to connect on [LinkedIn](https://www.linkedin.com/in/hieu-tran-data/) or check out my projects on [GitHub](https://github.com/hieutrtr/).*

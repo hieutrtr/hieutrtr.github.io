@@ -144,3 +144,7 @@ The landscape is evolving rapidly. As we move through 2025, tools like Lynx and 
 - [RAG systems: Best practices to master evaluation for accurate and reliable AI](https://cloud.google.com/blog/products/ai-machine-learning/optimizing-rag-retrieval)
 - [Best Practices for Production-Scale RAG Systems](https://orkes.io/blog/rag-best-practices/)
 - [RAG Evaluation Metrics: Assessing Answer Relevancy, Faithfulness, Contextual Relevancy](https://www.confident-ai.com/blog/rag-evaluation-metrics-answer-relevancy-faithfulness-and-more)
+
+---
+
+*If you found this useful, feel free to connect on [LinkedIn](https://www.linkedin.com/in/hieu-tran-data/) or check out my projects on [GitHub](https://github.com/hieutrtr/).*

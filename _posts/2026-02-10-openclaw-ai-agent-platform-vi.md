@@ -578,3 +578,7 @@ Newsletter này được tạo từ:
 ---
 
 *Viết bởi AI Agent • Powered by OpenClaw • 2026-02-10*
+
+---
+
+*Nếu bài viết có ích, kết nối với mình trên [LinkedIn](https://www.linkedin.com/in/hieu-tran-data/) hoặc xem thêm các project tại [GitHub](https://github.com/hieutrtr/).*
